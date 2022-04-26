@@ -22,9 +22,8 @@ For the backend we use cloud computing comprising of AWS S3, Lambda, Dynamo DB a
 We also have various filters to filter out data and view data according to our region , date and module preferences.
 We test hypotheses and reveal hidden patterns in the usage of the app to find out the reach and security level of the application using the advanced analytic engine.
 
+<img width="951" alt="Screenshot 2022-03-29 172714 (3)" src="https://user-images.githubusercontent.com/104201866/165235955-3984bc91-e5bc-4cae-8654-e1ef3d95d8da.png">
 
-<img width="930" alt="Screenshot 2022-03-29 172714 (2)" src="https://user-images.githubusercontent.com/104201866/165235317-ba200720-ae28-4247-9d87-cc60e9a32b2f.png">
+<img width="942" alt="Screenshot 2022-03-29 172651 (3)" src="https://user-images.githubusercontent.com/104201866/165235996-48aadb21-0c43-40c4-85ab-7d599d7c292e.png">
 
-<img width="932" alt="Screenshot 2022-03-29 172634 (2)" src="https://user-images.githubusercontent.com/104201866/165235346-11a27c5b-3b2d-4b0c-a351-914ebd5d6506.png">
-
-<img width="927" alt="Screenshot 2022-03-29 172651 (2)" src="https://user-images.githubusercontent.com/104201866/165235611-8e4dac4e-0b6d-4066-8856-0166d715d1ff.png">
+<img width="952" alt="Screenshot 2022-03-29 172634 (3)" src="https://user-images.githubusercontent.com/104201866/165236023-0b9101d4-6563-4b55-b98b-52818e97d652.png">
