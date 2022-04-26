@@ -1,0 +1,118 @@
+<div id="header" *ngIf="chart6"
+  style="width:700px; float:left; height:310px;margin:5px;margin-top:5px;margin-left:10px;margin-bottom:5px;box-shadow:5px 5px 5px grey;">
+  <br>
+
+  <canvas id="canvas6" style="width:680px;height:250px">{{chart6}}</canvas>
+
+  <h3 style="text-align: center;font-weight: bold;">App Usage throughout the day</h3>
+
+</div>
+
+
+<div id="header" *ngIf="chart5"
+  style="width:520px; float:left; height:320px;margin:5px;margin-top:-7px;margin-left:15px;margin-bottom:5px;box-shadow:5px 5px 5px grey;">
+  <br>
+
+  <canvas id="canvas5" style="width:500px;height:250px">{{chart5}}</canvas>
+
+  <h3 style="text-align: center;font-weight: bold;">operations portal usage throughout the day</h3>
+
+</div>
+<div
+  style="width:700px;float:left; height:970px;margin:10px;margin-top:35px;box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <h4 style="font-weight: bold;text-align: center;">Recent in use Api Calls for Today / All API calls for other days
+  </h4>
+  <div class="search-container" style="width:700px;">
+    <mat-form-field appearance="fill" style="width:700px;">
+      <input matInput placeholder="search" autocomplete="off" (keyup)="filterData($event)">
+    </mat-form-field>
+  </div>
+  <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" style="width:700px;height:970px;">
+
+    <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="method">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Method</th>
+      <td mat-cell *matCellDef="let element"> {{element.method}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="module">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Module</th>
+      <td mat-cell *matCellDef="let element"> {{element.module}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="api">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Api route</th>
+      <td mat-cell *matCellDef="let element"> {{element.api}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="response">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Response</th>
+      <td mat-cell *matCellDef="let element"> {{element.response}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Time(s)</th>
+      <td mat-cell *matCellDef="let element"> {{element.time/1000}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="region">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Region</th>
+      <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nowtime">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Stamp</th>
+      <td mat-cell *matCellDef="let element"> {{element.nowtime}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator [pageSize]="12" [pageSizeOptions]="[4,5,6,7,8,9,10,12,14,16]">
+  </mat-paginator>
+</div>
+
+
+
+
+<div id="header" *ngIf="chart1"
+  style="width:520px; float:left; height:280px;margin:5px;margin-top:10px;margin-left:10px;margin-bottom:5px;box-shadow:5px 5px 5px grey;">
+  <br>
+
+  <canvas id="canvas1" style="width:520px;height:220px">{{chart1}}</canvas>
+
+  <h3 style="text-align: center;font-weight: bold;">booking portal usage throughout the day</h3>
+
+</div>
+<div id="header" *ngIf="chart2"
+  style="width:520px; float:left; height:280px;margin:5px;margin-top:10px;margin-left:10px;margin-bottom:5px;box-shadow:5px 5px 5px grey;">
+  <br>
+
+  <canvas id="canvas2" style="width:520px;height:220px">{{chart2}}</canvas>
+
+  <h3 style="text-align: center;font-weight: bold;">subscriptions portal usage throughout the day</h3>
+
+</div>
+
+<div id="header" *ngIf="chart3"
+  style="width:520px; float:left; height:280px;margin:5px;margin-top:10px;margin-left:10px;margin-bottom:5px;box-shadow:5px 5px 5px grey;">
+  <br>
+
+  <canvas id="canvas3" style="width:520px;height:220px">{{chart3}}</canvas>
+
+  <h3 style="text-align: center;font-weight: bold;">content portal usage throughout the day</h3>
+
+</div>
+<div id="header" *ngIf="chart4"
+  style="width:520px; float:right; height:280px;margin:5px;margin-top:5px;margin-right:13px;margin-bottom:5px;box-shadow:5px 5px 5px grey;">
+  <br>
+
+  <canvas id="canvas4" style="width:520px;height:220px">{{chart4}}</canvas>
+
+  <h3 style="text-align: center;font-weight: bold;">trainer portal usage throughout the day</h3>
+
+</div>

@@ -1,0 +1,35 @@
+button {
+    display: inline-block;
+    padding: 6px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #e27522;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 6px rgb(192, 189, 189);
+  }
+  
+  .button:hover {background-color: #e27623}
+  
+  .button:active {
+    background-color: rgb(226, 142, 15);
+    box-shadow: 0 2px rgb(197, 194, 194);
+    transform: translateY(4px);
+  }
+  #header{
+    position: absolute;
+  
+    margin-right: auto;
+    width: 100%;
+}
+#content{
+    position:absolute;
+    width:100%;
+
+}
+
+  

@@ -1,0 +1,94 @@
+.button {
+    display: inline-block;
+    padding: 0px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #e27522;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 7px rgb(199, 195, 195);
+  }
+  
+  .button:hover {background-color: #e27623}
+  
+  .button:active {
+    background-color: rgb(226, 142, 15);
+    box-shadow: 0 2px rgb(197, 194, 194);
+    transform: translateY(4px);
+  }
+  .container {
+    display: grid;
+    
+  }
+  
+  .content, .overlay1 {
+    grid-area: 1 / 1;
+    
+   
+  }
+
+
+
+
+
+
+
+
+  
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  overflow-x: hidden;
+  transition: 0.5s;
+  box-shadow: 3px 3px 10px 3px #888888;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+ 
+ 
+  

@@ -1,0 +1,157 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<app-navbar></app-navbar>
+<br>
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <div class="overlay-content" style="margin-top:-70px;">
+    <h3 style="float:left;margin-left:100px;font-weight: bold;color: #008080;">Select Filters for data</h3>
+    <br>
+    <h5 style="float:left;margin-left:40px;font-weight: bold;font-size: small;">Select a module to see insights of that
+      module</h5>
+    <form [formGroup]="moduleForm" style="float:left;margin-left:40px;margin-bottom:45px;font-size: 0.7rem">
+      <button (click)="onFormSubmit()" class="button" style="height:35px;" type="submit" [disabled]="moduleForm.invalid"
+        mat-flat-button color="primary">Go to</button>
+      <mat-form-field [style.width.px]=240 appearance="fill" style="float:center;height:10px;">
+        <mat-label>Choose a module</mat-label>
+        <mat-select #matRef2 formControlName="module" [errorStateMatcher]="matcher">
+          <mat-option *ngFor="let s of set" [value]="s">{{s}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+    </form>
+    <br>
+    <h5 style="float:left;margin-left:40px;font-weight: bold;font-size: small;">Select a region to see insights of that
+      region</h5>
+    <form [formGroup]="regionForm" style="float:left;margin-left:40px;margin-bottom:45px;font-size: 0.7rem">
+      <button (click)="onFormSubmit2()" class="button" style="height:35px;" type="submit"
+        [disabled]="regionForm.invalid" mat-flat-button color="primary">Go to</button>
+      <mat-form-field [style.width.px]=240 appearance="fill" style="float:center;height:10px;">
+        <mat-label>Choose a region</mat-label>
+        <mat-select #matRef formControlName="reeg" [errorStateMatcher]="matcher">
+          <mat-option *ngFor="let reg of region" [value]="reg">{{reg}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+    </form>
+    <h5 style="float:left;margin-left:40px;font-weight: bold;font-size: small;">Select a range to see insights within
+      that date frame</h5>
+    <form [formGroup]="range" style="float:left;margin-left:40px;margin-bottom:30px;font-size: 0.7rem">
+      <button (click)="onFormSubmit1()" class='button' [disabled]="true"
+        style="height:35px;margin-left:0px;margin-bottom:20px;" type="submit" [disabled]="range.invalid" mat-flat-button
+        color="primary">Go to</button>
+      <mat-form-field [style.width.px]=240 appearance="fill" style="float:center;height:10px;">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [min]='minDate' [max]='maxDate' [rangePicker]="picker" #picker1>
+          <input #fromInput matInput matStartDate formControlName="start" placeholder="Start date"
+            [errorStateMatcher]="matcher">
+          <input #toInput matInput matEndDate formControlName="end" placeholder="End date"
+            [errorStateMatcher]="matcher">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+      </mat-form-field>
+
+    </form>
+
+
+    <h5 style="float:left;margin-left:40px;font-weight: bold;font-size: small;">Select a date to see detailed usage of
+      that day</h5>
+    <form [formGroup]="singlerange"
+      style="float:left;margin-left:40px;margin-bottom:40px;height:20px; font-size: 0.7rem">
+      <button (click)="onFormSubmit4()" class='button' [disabled]="true"
+        style="height:35px;margin-left:0px;margin-bottom:70px;" type="submit" [disabled]="singlerange.invalid"
+        mat-flat-button color="primary">Go to</button>
+      <mat-form-field [style.width.px]=240 appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input #inputt matInput [max]='maxDate1' [min]='minDate1' formControlName="start1" [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+
+    </form>
+    <br>
+
+
+
+  </div>
+</div>
+
+<span style="font-size:30px;cursor:pointer;margin-left:10px;margin-top:10px;" (click)="openNav()">&#9776;</span>
+<br>
+<button class="button" style="height:35px;float:left;margin-left:60px;margin-top:-35px;font-weight:bold;"
+  onClick="window.location.reload();">Home
+</button>
+<div *ngIf="single!=''; else elseBlock10">
+  <div *ngFor="let it of item" [ngSwitch]="it">
+    <div *ngSwitchCase="single">
+      <app-todaydashboard [data]="it"></app-todaydashboard>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock10>
+  <div class="container">
+
+    <div class="content">
+
+      <div *ngIf="important===''; else elseBlock1">
+        <div *ngIf="regi===''; else elseBlock2">
+          <div *ngIf="prev===en; else elseBlock3">
+            <app-maindashboard [data]="daterange"></app-maindashboard>
+          </div>
+          <ng-template #elseBlock3>
+            <app-maindashboard [data]="daterange"></app-maindashboard>
+          </ng-template>
+        </div>
+        <ng-template #elseBlock2>
+          <div *ngFor="let r of region" [ngSwitch]="r">
+            <div *ngSwitchCase="regi">
+              <div *ngIf="prev===en; else elseBlock4">
+                <app-maindashboard [data]="daterange+'$'+r"></app-maindashboard>
+              </div>
+              <ng-template #elseBlock4>
+                <app-maindashboard [data]="daterange+'$'+r"></app-maindashboard>
+              </ng-template>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+      <ng-template #elseBlock1>
+        <div *ngFor="let s of set" [ngSwitch]="s">
+          <div *ngSwitchCase="important">
+            <div *ngIf="regi===''; else elseBlock6">
+              <div *ngIf="prev===en; else elseBlock7">
+                <app-modulebasedata [data]="s+'$'+daterange"></app-modulebasedata>
+              </div>
+              <ng-template #elseBlock7>
+                <app-modulebasedata [data]="s+'$'+daterange"></app-modulebasedata>
+              </ng-template>
+            </div>
+
+            <ng-template #elseBlock6>
+              <div *ngFor="let r of region" [ngSwitch]="r">
+                <div *ngSwitchCase="regi">
+                  <div *ngIf="prev===en; else elseBlock8">
+                    <app-modulebasedata [data]="s+'$'+daterange+'$'+r"></app-modulebasedata>
+                  </div>
+                  <ng-template #elseBlock8>
+                    <app-modulebasedata [data]="s+'$'+daterange+'$'+r"></app-modulebasedata>
+                  </ng-template>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+
+  </div>
+</ng-template>
+

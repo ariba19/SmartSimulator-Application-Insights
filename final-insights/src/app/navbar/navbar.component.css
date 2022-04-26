@@ -1,0 +1,31 @@
+.spacer{
+    flex:1 1 auto;
+}
+.fixed{
+    position:fixed;
+    top:0px;
+    width:100%;
+    margin-bottom: 100px;
+}
+button {
+    display: inline-block;
+    padding: 6px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #359c97;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 7px rgb(192, 189, 189);
+  }
+  
+  .button:hover {background-color: #59c0bb}
+  
+  .button:active {
+    background-color: rgb(226, 142, 15);
+    box-shadow: 0 2px rgb(197, 194, 194);
+    transform: translateY(4px);
+  }

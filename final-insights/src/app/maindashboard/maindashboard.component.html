@@ -1,0 +1,142 @@
+<h2 style="float:right;text-align:left;margin-right:15px;text-transform:capitalize;margin-top:-25px;font-weight:bold;">
+  {{this.firstdate}} {{this.lastdate}} {{this.region}} Main Dashboard
+  <!--{{map304.get('metrics')}}-->
+</h2>
+
+<div
+  style="width:700px;float:left; height:550px;margin:10px;margin-top:35px;box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <div class="search-container" style="width:700px;">
+    <mat-form-field appearance="fill" style="width:700px;">
+      <input matInput placeholder="search" autocomplete="off" (keyup)="filterData($event)">
+    </mat-form-field>
+  </div>
+  <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" style="width:700px;height:550px;">
+    <ng-container matColumnDef="method">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Method</th>
+      <td mat-cell *matCellDef="let element"> {{element.method}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="module">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Module</th>
+      <td mat-cell *matCellDef="let element"> {{element.api.split("/")[1]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="api">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Api route</th>
+      <td mat-cell *matCellDef="let element"> {{element.api}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="response">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Response</th>
+      <td mat-cell *matCellDef="let element"> {{element.response}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Time(s)</th>
+      <td mat-cell *matCellDef="let element"> {{element.time/1000}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="region">
+      <th mat-header-cell *matHeaderCellDef>Region</th>
+      <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator [pageSize]="7" [pageSizeOptions]="[2,3,4,5,6,7]">
+  </mat-paginator>
+</div>
+
+<div>
+
+  <div *ngIf="chart4"
+    style="width:520px; float:left; height:320px;margin:8px;margin-left:10px;margin-top:8px;box-shadow:5px 5px 5px grey;">
+    <h3 style="text-align: center;font-weight: bolder;">Number of Module calls</h3>
+    <canvas id="canvas4">{{ chart4 }}</canvas>
+  </div>
+
+  <div
+    style="width:520px;float:left; height:230px;margin:8px;margin-top:12px;margin-left:10px;box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <h3 style="text-align: center;font-weight: bold;">Average Module fetch time(s)</h3>
+    <table mat-table [dataSource]="dataSource6" class="mat-elevation-z8" style="width:520px;height:230px;">
+
+
+      <ng-container matColumnDef="module">
+        <th mat-header-cell *matHeaderCellDef>Module</th>
+        <td mat-cell *matCellDef="let element">{{element.module}} </td>
+      </ng-container>
+      <ng-container matColumnDef="count">
+        <th mat-header-cell *matHeaderCellDef>Count</th>
+        <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef>Time(s)</th>
+        <td mat-cell *matCellDef="let element"> {{element.time/1000}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+
+
+    </table>
+    <mat-paginator #paginator6 [pageSize]="2" [pageSizeOptions]="[1,2,3,4]">
+    </mat-paginator>
+
+  </div>
+</div>
+
+
+
+
+<div>
+
+  <div id="header" *ngIf="chart2"
+    style="width:600px; float:left; height:210px;margin:5px;margin-top:710px;margin-left:10px;margin-bottom:5px;box-shadow:5px 5px 5px grey;">
+    <br>
+    <canvas id="canvas2" style="width:520px;height:170px">{{chart2}}</canvas>
+  </div>
+
+  <div *ngIf="chart"
+    style="width:620px; float:right; height:460px;margin:5px;margin-top:100px;margin-bottom:5px;margin-right:10px;box-shadow:5px 5px 5px grey;">
+
+    <canvas id="canvas" style="width:600px;height:395px">{{ chart }}</canvas>
+
+    <h3 style="text-align: center;font-weight: bolder;">Dominant response codes in modules</h3>
+  </div>
+
+
+  <div
+    style="width:594px;float:left; height:90px;margin:8px;margin-top:320px;margin-left:15px;box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <h3 style="text-align: center;font-weight: bold;">Per Module Dominance Info</h3>
+    <table mat-table [dataSource]="dataSource9" class="mat-elevation-z8" style="width:594px;height:90px;">
+
+
+      <ng-container matColumnDef="module">
+        <th mat-header-cell *matHeaderCellDef>Module</th>
+        <td mat-cell *matCellDef="let element">{{element.module}} </td>
+      </ng-container>
+      <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef>Region</th>
+        <td mat-cell *matCellDef="let element">{{element.region}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="api">
+        <th mat-header-cell *matHeaderCellDef>Api</th>
+        <td mat-cell *matCellDef="let element"> {{element.api}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns9"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns9;"></tr>
+
+
+    </table>
+    <mat-paginator #paginator9 [pageSize]="2" [pageSizeOptions]="[1,2]">
+    </mat-paginator>
+  </div>
+
+</div>
