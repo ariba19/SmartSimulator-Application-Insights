@@ -48,5 +48,5 @@ SmartSimulator Application Insights is an insights app which tracks live metrics
  
  ------------------------------------------------------------------
 
-## So this was a short description of the application insights app an what information we have in our project.For detailed Information on the working of the project kindly refer to the ppt file in the github repository.
+### So this was a short description of the application insights app an what information we have in our project.For detailed Information on the working of the project kindly refer to the ppt file in the github repository.
 
