@@ -22,8 +22,17 @@ For the backend we use cloud computing comprising of AWS S3, Lambda, Dynamo DB a
 We also have various filters to filter out data and view data according to our region , date and module preferences.
 We test hypotheses and reveal hidden patterns in the usage of the app to find out the reach and security level of the application using the advanced analytic engine.
 
+
+The first screenshot can be used to see the api distribution,errors,time responses of the operation insights module.
 <img width="951" alt="Screenshot 2022-03-29 172714 (3)" src="https://user-images.githubusercontent.com/104201866/165235955-3984bc91-e5bc-4cae-8654-e1ef3d95d8da.png">
 
+
+
+The second screenshort is the main dashboard where we see all the errors,responses without any filters but the left navbar can be used to apply filters as in the module names,region,date to track the metrics according to our choice of filters
 <img width="942" alt="Screenshot 2022-03-29 172651 (3)" src="https://user-images.githubusercontent.com/104201866/165235996-48aadb21-0c43-40c4-85ab-7d599d7c292e.png">
 
-<img width="952" alt="Screenshot 2022-03-29 172634 (3)" src="https://user-images.githubusercontent.com/104201866/165236023-0b9101d4-6563-4b55-b98b-52818e97d652.png">
+
+
+The third screenshot denotes the day wise usage of different portals in smart simulator website like booking portal,content portal etc
+<img width="960" alt="Screenshot 2022-03-29 173355" src="https://user-images.githubusercontent.com/104201866/165251998-9615693c-686b-40de-b625-c71d56dfabaa.png">
+
